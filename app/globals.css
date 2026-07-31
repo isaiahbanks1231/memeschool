@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(240 10% 3.9%);
+  --color-foreground: hsl(0 0% 98%);
+  --color-card: hsl(240 10% 5.9%);
+  --color-card-foreground: hsl(0 0% 98%);
+  --color-primary: hsl(263 70% 50.4%);
+  --color-primary-foreground: hsl(0 0% 98%);
+  --color-secondary: hsl(240 3.7% 15.9%);
+  --color-secondary-foreground: hsl(0 0% 98%);
+  --color-muted: hsl(240 3.7% 15.9%);
+  --color-muted-foreground: hsl(240 5% 64.9%);
+  --color-accent: hsl(240 3.7% 15.9%);
+  --color-accent-foreground: hsl(0 0% 98%);
+  --color-border: hsl(240 3.7% 15.9%);
+  --color-input: hsl(240 3.7% 15.9%);
+  --color-ring: hsl(263 70% 50.4%);
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Aurora Background Animation */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: hsl(240 10% 3.9%);
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: aurora 20s ease-in-out infinite;
+}
+
+.aurora-blob-1 {
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(59, 130, 246, 0.3));
+  top: -200px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.aurora-blob-2 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(139, 92, 246, 0.4));
+  top: 20%;
+  right: -150px;
+  animation-delay: -5s;
+}
+
+.aurora-blob-3 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(16, 185, 129, 0.2));
+  bottom: -100px;
+  left: 30%;
+  animation-delay: -10s;
+}
+
+@keyframes aurora {
+  0%, 100% { transform: translate(0%, 0%) rotate(0deg); }
+  25% { transform: translate(5%, 5%) rotate(5deg); }
+  50% { transform: translate(0%, 10%) rotate(0deg); }
+  75% { transform: translate(-5%, 5%) rotate(-5deg); }
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Noise Texture */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(240 10% 3.9%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(240 3.7% 20%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(240 3.7% 30%);
+}
+
+/* Animation utilities */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
